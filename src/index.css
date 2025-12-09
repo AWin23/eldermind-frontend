@@ -1,0 +1,117 @@
+/* ----------------------------------------------------------
+   Global ElderMind Theme
+   ---------------------------------------------------------- */
+
+/* Optional: if you've added a Daedric font file in /public/fonts */
+/*
+@font-face {
+  font-family: 'Daedric';
+  src: url('/fonts/Daedric.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+*/
+
+/* Root sizing so the app can fill the viewport */
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Elder Scrolls–style dark parchment night */
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  display: block;
+  /* Deep night blue with a soft vignette */
+  background:
+    radial-gradient(circle at top, #1f2933 0, #020617 55%, #020617 100%);
+  color: #e5dcc3; /* warm parchment text */
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Links: subtle, desaturated magic blue */
+a {
+  color: #9fb5ff;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Headings: engraved Imperial stone look */
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Cinzel', 'Cormorant Garamond', serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+  color: #f4e4b5; /* soft golden */
+}
+
+/* Paragraph defaults */
+p {
+  margin: 0;
+}
+
+/* Buttons: base style (component CSS can refine further) */
+button {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+/* Utility: gold accent for important text (like titles) */
+.tes-gold {
+  color: #f4e4b5;
+}
+
+/* Utility: muted stone text */
+.tes-muted {
+  color: #9ca3af;
+}
+
+/* Optional: Daedric rune text */
+.daedric-text {
+  font-family: 'Daedric', 'Cinzel', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.7rem;
+}
+
+/* Scrollbar styling for a “scroll of knowledge” feel */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 999px;
+  border: 1px solid #020617;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Light mode fallback if user forces it */
+@media (prefers-color-scheme: light) {
+  body {
+    background:
+      radial-gradient(circle at top, #e5dfcf 0, #d5c9a3 45%, #c2b68a 100%);
+    color: #2b2a26;
+  }
+}

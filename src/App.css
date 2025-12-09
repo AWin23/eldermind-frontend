@@ -1,0 +1,167 @@
+/* App.css
+ * Full-screen ElderMind chat layout (desktop-first).
+ */
+
+/* Root wrapper: covers entire viewport, dark background */
+.app-root {
+  height: 100vh;              /* full viewport height */
+  width: 100vw;               /* full viewport width */
+  margin: 0;
+  padding: 0;
+  background-color: #020617;  /* dark slate */
+  color: #e5e7eb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Chat container: fills the screen, no centering card */
+.chat-container {
+  height: 100%;               /* fill app-root */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;           /* full-screen; no rounded corners */
+  background-color: #020617;
+  border: none;               /* optional: remove border for full-bleed look */
+  box-shadow: none;           /* no card shadow in full-screen */
+}
+
+/* Header sticks to top */
+.chat-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #1f2933;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-title {
+  font-size: 20px;
+  margin: 0;
+}
+
+.chat-subtitle {
+  font-size: 12px;
+  margin: 2px 0 0;
+  color: #9ca3af;
+}
+
+.chat-status {
+  font-size: 12px;
+  color: #facc15;
+}
+
+/* Messages take all remaining vertical space */
+.chat-messages {
+  flex: 1;                    /* grow to fill */
+  padding: 16px 24px;
+  overflow-y: auto;
+}
+
+/* Empty state centered in messages area */
+.chat-empty-state {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  padding: 0 24px;
+}
+
+/* Message rows + bubbles (same as before) */
+.message-row {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.message-row-user {
+  justify-content: flex-end;
+}
+
+.message-row-assistant {
+  justify-content: flex-start;
+}
+
+.message-bubble {
+  max-width: 700px;
+  border-radius: 16px;
+  padding: 8px 12px;
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+
+.message-bubble-user {
+  background-color: #4f46e5;
+  color: #ffffff;
+}
+
+.message-bubble-assistant {
+  background-color: #111827;
+  color: #e5e7eb;
+}
+
+.message-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 4px;
+  letter-spacing: 0.05em;
+}
+
+/* Error bar above input */
+.chat-error {
+  padding: 6px 24px;
+  font-size: 12px;
+  color: #fca5a5;
+  border-top: 1px solid #1f2933;
+}
+
+/* Input is pinned to bottom */
+.chat-input-area {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-top: 1px solid #1f2933;
+  gap: 8px;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #374151;
+  background-color: #020617;
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+.chat-input::placeholder {
+  color: #6b7280;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+.chat-send-button {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #4f46e5;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.chat-send-button:disabled {
+  background-color: #374151;
+  cursor: not-allowed;
+}
