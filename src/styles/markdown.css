@@ -1,0 +1,47 @@
+/* --------------------------------------------------------
+   ElderMind Markdown Styling
+   Clean, readable, lore-friendly formatting
+   -------------------------------------------------------- */
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3 {
+  font-family: 'Cinzel', serif;
+  color: #f4e4b5;              /* golden TES heading */
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.06em;
+}
+
+.markdown-body p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.markdown-body strong {
+  color: #f0d899;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  margin: 0.5rem 0 0.5rem 1.2rem;
+}
+
+.markdown-body li {
+  margin-bottom: 0.25rem;
+}
+
+.markdown-body code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.markdown-body blockquote {
+  border-left: 3px solid #bfa76e;
+  padding-left: 0.75rem;
+  color: #cbbfa5;
+  font-style: italic;
+  margin: 1rem 0;
+}

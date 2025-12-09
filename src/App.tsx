@@ -3,6 +3,9 @@ import type { FormEvent } from 'react';
 import { useChat } from './hooks/useChat';
 import type { ChatMessage } from './types/chat';
 import './App.css'; 
+import './styles/markdown.css';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 // --------------------------------------------------------------
 // App.tsx
@@ -20,9 +23,20 @@ import './App.css';
 // --------------------------------------------------------------
 
 function App() {
+
+  // Function to unescape special characters in message content
+  function unescapeContent(text: string): string {
+    if (!text) return '';
+    return text
+      .replace(/\\n/g, '\n')        // convert "\n" → actual newline
+      .replace(/\\t/g, '\t')        // convert "\t" if present
+      .replace(/\\r/g, '\r');       // convert "\r" if present
+  }
+
+
   // Extract reactive chat state + methods from our custom hook
   const { messages, isLoading, error, sendUserMessage } = useChat();
-
+  
   // Local input field state (controlled input)
   const [input, setInput] = useState('');
 
@@ -68,7 +82,11 @@ function App() {
           }
         >
           <div className="message-label">{label}</div>
-          <div className="message-content">{message.content}</div>
+          <div className="message-content markdown-body">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {unescapeContent(message.content)}
+            </ReactMarkdown>
+          </div>
         </div>
       </div>
     );
