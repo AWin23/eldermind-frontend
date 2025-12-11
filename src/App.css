@@ -34,6 +34,14 @@
   align-items: center;
 }
 
+/* App.css */
+.chat-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+
 .chat-header-text {
   display: flex;
   flex-direction: column;
@@ -165,3 +173,67 @@
   background-color: #374151;
   cursor: not-allowed;
 }
+
+
+/* Persona selector bar under header title */
+.persona-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.persona-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #9ca3af;
+}
+
+/* Container for pill buttons */
+.persona-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* TES-style pill buttons */
+.persona-pill {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #3f3d32;
+  background: rgba(15, 23, 42, 0.8);
+  color: #e5dcc3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 110px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.persona-pill:hover {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: #4b5563;
+  transform: translateY(-1px);
+}
+
+.persona-pill-active {
+  border-color: #f4e4b5;
+  background: radial-gradient(circle at top, #37302a 0, #111827 60%);
+  box-shadow: 0 0 0 1px rgba(244, 228, 181, 0.3);
+}
+
+.persona-pill-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f4e4b5;
+}
+
+.persona-pill-subtitle {
+  font-size: 10px;
+  color: #b1a58b;
+}
+

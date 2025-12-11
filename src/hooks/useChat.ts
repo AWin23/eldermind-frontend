@@ -16,10 +16,11 @@
 // This keeps the backend completely stateless.
 // ---------------------------------------------
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { ChatMessage } from '../types/chat';
 import { sendChat } from '../services/eldermindApi';
 import { v4 as uuidv4 } from 'uuid';
+import type { Persona } from '../types/persona';
 
 export function useChat() {
   // Full chat history (managed on the frontend)
@@ -30,6 +31,16 @@ export function useChat() {
 
   // Error message shown to the user if backend fails
   const [error, setError] = useState<string | null>(null);
+
+  // Selected persona for the chat
+  const [persona, setPersona] = useState<Persona>('scholar');
+  
+  // DEBUG: Log persona changes
+  useEffect(() => {
+    console.log('[useChat] Persona changed to:', persona);
+  }, [persona]);
+
+
 
   // ---------------------------------------------
   // Main function that handles user message sending.
@@ -56,11 +67,15 @@ export function useChat() {
 
     try {
 
+      console.log('[useChat] About to send chat:');
+      console.log('  persona:', persona);
+      console.log('  messages:', nextMessages);
+
       // 🔍 Log the message list you’re about to send
       console.log('[useChat] Sending messages to backend:', nextMessages);
 
       // Backend returns a ChatMessage representing assistant response
-      const assistantMessage = await sendChat(nextMessages);
+      const assistantMessage = await sendChat(persona, nextMessages);
 
       console.log('[useChat] Received assistant message:', assistantMessage);
 
@@ -79,5 +94,7 @@ export function useChat() {
     isLoading,
     error,
     sendUserMessage,
+    persona,
+    setPersona,
   };
 }

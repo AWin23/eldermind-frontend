@@ -13,19 +13,23 @@
 
 import { apiFetch } from './apiClient';
 import type { ChatMessage } from '../types/chat';
+import type { Persona } from '../types/persona';
 import { v4 as uuidv4 } from 'uuid';
 
-// Adjust this interface to match your backend.
+// Adjust this interface to match backend.
 // For now, assume backend returns { role, content }.
-interface ChatResponseDto {
-  role: string;
-  content: string;
+export interface ChatResponseDto {
+  completionTokens: number;
+  promptTokens: number;
+  reply: string; 
 }
 
 export async function sendChat(
-  messages: ChatMessage[]
+  persona: Persona,          // Persona parameter
+  messages: ChatMessage[] // ChatMessage array parameter
 ): Promise<ChatMessage> {
   const payload = {
+    persona,  // persona parameter
     messages: messages.map((m) => ({
       role: m.role,
       content: m.content,
@@ -45,8 +49,8 @@ export async function sendChat(
   // Build a proper ChatMessage for the frontend
   const assistantMessage: ChatMessage = {
     id: uuidv4(),
-    role: (res as any).role ?? 'assistant',
-    content: (res as any).content ?? JSON.stringify(res),
+    role: 'assistant',
+    content: res.reply,  
     createdAt: new Date().toISOString(),
   };
 
